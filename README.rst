@@ -4,6 +4,8 @@
 pytest-twisted - test twisted code with pytest
 ==============================================================================
 
+THIS IS AN UNSUPPORTED FORK FOR PERSONAL USE.
+
 |PyPI| |Pythons| |Travis| |AppVeyor| |Actions| |Black|
 
 :Authors: Ralf Schmitt, Kyle Altendorf, Victor Titor

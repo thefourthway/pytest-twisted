@@ -414,9 +414,20 @@ def init_qt5_reactor():
 def init_asyncio_reactor():
     """Install the Twisted reactor for asyncio."""
     from twisted.internet import asyncioreactor
+    
+    def install_reactor_inner(*args, **kwargs):
+        import asyncio
+
+        loop = asyncio.get_event_loop()
+
+        if loop is None:
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+        
+        return asyncioreactor.install(loop)
 
     _install_reactor(
-        reactor_installer=asyncioreactor.install,
+        reactor_installer=install_reactor_inner,
         reactor_type=asyncioreactor.AsyncioSelectorReactor,
     )
 
